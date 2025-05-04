@@ -45,3 +45,11 @@ def predict(input_data: CropInput):
 
     # Return the prediction
     return {"predicted_crop": prediction[0]}
+# app.py
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
