@@ -31,7 +31,12 @@ class CropInput(BaseModel):
     ph: float
     rainfall: float
 
-# Create a route to get crop recommendations
+# Root route
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+# Prediction route
 @app.post("/predict/")
 def predict(input_data: CropInput):
     # Extract input data
@@ -40,16 +45,11 @@ def predict(input_data: CropInput):
     ph = input_data.ph
     rainfall = input_data.rainfall
 
-    # Predict the crop using the model (replace this with your prediction logic)
+    # Predict the crop using the model
     prediction = model.predict([[temp, humidity, ph, rainfall]])
 
     # Return the prediction
     return {"predicted_crop": prediction[0]}
-# app.py
-from fastapi import FastAPI
 
-app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+
