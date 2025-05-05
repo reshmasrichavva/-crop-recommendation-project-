@@ -7,7 +7,7 @@ import os
 # Initialize the FastAPI app
 app = FastAPI()
 
-# Initialize an S3 client using boto3
+# Initialize an S3 client using boto3 (without hardcoding credentials)
 s3 = boto3.client('s3')
 
 # Function to download the model from S3
@@ -50,6 +50,4 @@ def predict(input_data: CropInput):
 
     # Return the prediction
     return {"predicted_crop": prediction[0]}
-
-
 
